@@ -13,14 +13,14 @@ app.use(bodyparser.urlencoded({extended: false}))
 
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, "app", 'build')));
 
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-
+const port = process.env.PORT || 5000
 app.use("/", users)
 
-app.listen(5000, () => console.log("server running"))
+app.listen(port, () => console.log("server running"))
